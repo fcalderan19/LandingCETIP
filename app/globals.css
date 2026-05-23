@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-petroleo: #233841;
+  --color-petroleo-50: #f1f4f6;
+  --color-petroleo-100: #d9e0e3;
+  --color-petroleo-700: #1c2d35;
+  --color-verde: #4ab748;
+  --color-verde-600: #3da13b;
+  --color-coral: #ef3867;
+  --color-coral-600: #d92756;
+  --color-naranja: #f79321;
+  --color-naranja-600: #e08210;
+  --color-celeste: #2bace3;
+  --color-celeste-600: #1d96cb;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-petroleo);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle fade-in on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pulse for WhatsApp floating button */
+@keyframes softPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 183, 72, 0.55); }
+  50% { box-shadow: 0 0 0 14px rgba(74, 183, 72, 0); }
+}
+.pulse-wa { animation: softPulse 2.2s infinite; }
+
+/* Focus ring */
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-celeste);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
