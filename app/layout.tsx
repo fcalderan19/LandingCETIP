@@ -5,7 +5,6 @@ import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsapp from "@/components/FloatingWhatsapp";
-import CVDrawer from "@/components/CVDrawer";
 import RevealObserver from "@/components/RevealObserver";
 
 export const metadata: Metadata = {
@@ -59,7 +58,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <FloatingWhatsapp />
-        <CVDrawer />
         <RevealObserver />
       </body>
     </html>

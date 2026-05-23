@@ -7,17 +7,16 @@ export type NavItem = {
 export const nav: NavItem[] = [
   { href: "/", label: "Inicio" },
   { href: "/quienes-somos", label: "Quiénes Somos" },
-  { href: "/equipo", label: "Nuestro Equipo" },
-  { href: "/nuestro-espacio", label: "Nuestro Espacio" },
   {
-    href: "/servicios",
-    label: "Servicios",
+    href: "/programas-terapeuticos",
+    label: "Programas Terapéuticos",
     children: [
-      { href: "/servicios/cet", label: "CET" },
-      { href: "/servicios/consultorios", label: "Consultorios Externos" },
-      { href: "/servicios/talleres", label: "Talleres" }
+      { href: "/programas-terapeuticos/cet", label: "CET" },
+      { href: "/programas-terapeuticos/consultorios", label: "Consultorios Externos" },
+      { href: "/programas-terapeuticos/talleres", label: "Talleres" }
     ]
   },
-  { href: "/rrhh", label: "RR.HH." },
-  { href: "/contacto", label: "Contacto" }
+  { href: "/nuestro-espacio", label: "Nuestro Espacio" },
+  { href: "/admision", label: "Formulario de Admisión" },
+  { href: "/rrhh", label: "RR.HH." }
 ];

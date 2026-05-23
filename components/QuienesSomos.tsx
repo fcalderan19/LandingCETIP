@@ -28,8 +28,8 @@ export default function QuienesSomos() {
         <div className="reveal order-1 md:order-2">
           <div className="aspect-[5/4] rounded-3xl overflow-hidden shadow-xl group">
             <img
-              src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=70"
-              alt="Equipo de profesionales conversando"
+              src="/img/taller-arte.jpg"
+              alt="Taller de arte en CETIP"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
             />

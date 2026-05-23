@@ -19,8 +19,8 @@ export default function Page() {
         subtitle="Espacios grupales para fortalecer habilidades, vínculos y autonomía."
         image="https://images.unsplash.com/photo-1530021232320-687d8e3dba54?auto=format&fit=crop&w=1600&q=70"
         crumbs={[
-          { href: "/servicios", label: "Servicios" },
-          { href: "/servicios/talleres", label: "Talleres" }
+          { href: "/programas-terapeuticos", label: "Programas Terapéuticos" },
+          { href: "/programas-terapeuticos/talleres", label: "Talleres" }
         ]}
       />
       <section className="py-16 md:py-24">

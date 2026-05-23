@@ -2,12 +2,12 @@ import Link from "next/link";
 import { IconBook, IconBrain, IconHand, IconHeart, IconMusic, IconUsers, IconSpeech } from "./Icons";
 
 const items = [
-  { href: "/servicios/cet", color: "celeste", icon: IconUsers, title: "CET", desc: "Centro Educativo Terapéutico — jornada simple y completa." },
-  { href: "/servicios/consultorios", color: "coral", icon: IconBrain, title: "Consultorios Externos", desc: "Atención individual con profesionales especializados." },
-  { href: "/servicios/talleres", color: "naranja", icon: IconMusic, title: "Talleres", desc: "Espacios grupales para fortalecer habilidades y vínculos." },
-  { href: "/servicios/consultorios", color: "celeste", icon: IconSpeech, title: "Fonoaudiología", desc: "Evaluación y tratamiento del lenguaje y la comunicación." },
-  { href: "/servicios/consultorios", color: "coral", icon: IconHand, title: "Terapia Ocupacional", desc: "Promovemos autonomía, integración sensorial y vida diaria." },
-  { href: "/servicios/consultorios", color: "naranja", icon: IconHeart, title: "Acompañamiento familiar", desc: "Sostén y orientación para las familias." }
+  { href: "/programas-terapeuticos/cet", color: "celeste", icon: IconUsers, title: "CET", desc: "Centro Educativo Terapéutico — jornada simple y completa." },
+  { href: "/programas-terapeuticos/consultorios", color: "coral", icon: IconBrain, title: "Consultorios Externos", desc: "Atención individual con profesionales especializados." },
+  { href: "/programas-terapeuticos/talleres", color: "naranja", icon: IconMusic, title: "Talleres", desc: "Espacios grupales para fortalecer habilidades y vínculos." },
+  { href: "/programas-terapeuticos/consultorios", color: "celeste", icon: IconSpeech, title: "Fonoaudiología", desc: "Evaluación y tratamiento del lenguaje y la comunicación." },
+  { href: "/programas-terapeuticos/consultorios", color: "coral", icon: IconHand, title: "Terapia Ocupacional", desc: "Promovemos autonomía, integración sensorial y vida diaria." },
+  { href: "/programas-terapeuticos/consultorios", color: "naranja", icon: IconHeart, title: "Acompañamiento familiar", desc: "Sostén y orientación para las familias." }
 ] as const;
 
 const accents: Record<string, { ring: string; text: string; bg: string }> = {

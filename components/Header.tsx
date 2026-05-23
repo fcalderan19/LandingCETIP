@@ -17,12 +17,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-[var(--color-petroleo-100)]">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="h-10 w-10 rounded-full bg-[var(--color-petroleo)] text-white grid place-items-center font-bold">C</div>
-          <div className="leading-tight">
-            <div className="font-bold text-[var(--color-petroleo)]">CETIP</div>
-            <div className="text-[11px] text-[var(--color-petroleo)]/70">Centro Educativo Terapéutico</div>
-          </div>
+        <Link href="/" className="flex items-center gap-3 group">
+          <img
+            src="/img/cetip-logo.png"
+            alt="CETIP"
+            className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+          />
+          <span className="hidden md:block text-[11px] leading-tight text-[var(--color-petroleo)]/70 max-w-[160px]">
+            Centro Educativo Terapéutico y de Investigación Psiconeurológica
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">

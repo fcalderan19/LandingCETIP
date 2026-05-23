@@ -28,8 +28,8 @@ export default function Page() {
         subtitle="Programa integral con jornada simple o completa para niños, adolescentes y jóvenes."
         image="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=70"
         crumbs={[
-          { href: "/servicios", label: "Servicios" },
-          { href: "/servicios/cet", label: "CET" }
+          { href: "/programas-terapeuticos", label: "Programas Terapéuticos" },
+          { href: "/programas-terapeuticos/cet", label: "CET" }
         ]}
       />
       <section className="py-16 md:py-24">

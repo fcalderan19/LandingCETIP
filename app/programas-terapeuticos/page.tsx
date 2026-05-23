@@ -3,11 +3,11 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { IconBook, IconBrain, IconHand, IconHeart, IconMusic, IconSpeech, IconUsers } from "@/components/Icons";
 
-export const metadata: Metadata = { title: "Servicios | CETIP" };
+export const metadata: Metadata = { title: "Programas Terapéuticos | CETIP" };
 
 const services = [
   {
-    href: "/servicios/cet",
+    href: "/programas-terapeuticos/cet",
     color: "celeste",
     icon: IconUsers,
     title: "CET — Centro Educativo Terapéutico",
@@ -15,7 +15,7 @@ const services = [
     bullets: ["4 a 25 años", "Equipo interdisciplinario", "Articulación con escuela y familia"]
   },
   {
-    href: "/servicios/consultorios",
+    href: "/programas-terapeuticos/consultorios",
     color: "coral",
     icon: IconBrain,
     title: "Consultorios Externos",
@@ -23,7 +23,7 @@ const services = [
     bullets: ["Psicología · TO · Fonoaudiología", "Psicopedagogía · Musicoterapia", "Obras sociales y prepagas"]
   },
   {
-    href: "/servicios/talleres",
+    href: "/programas-terapeuticos/talleres",
     color: "naranja",
     icon: IconMusic,
     title: "Talleres",
@@ -42,9 +42,9 @@ export default function Page() {
   return (
     <>
       <PageHero
-        title="Servicios"
+        title="Programas Terapéuticos"
         subtitle="Tres líneas de trabajo articuladas para acompañar cada etapa."
-        crumbs={[{ href: "/servicios", label: "Servicios" }]}
+        crumbs={[{ href: "/programas-terapeuticos", label: "Programas Terapéuticos" }]}
       />
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-3 gap-6">

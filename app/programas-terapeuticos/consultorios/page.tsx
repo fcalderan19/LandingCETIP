@@ -22,8 +22,8 @@ export default function Page() {
         subtitle="Atención individual con profesionales especializados en distintas disciplinas."
         image="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1600&q=70"
         crumbs={[
-          { href: "/servicios", label: "Servicios" },
-          { href: "/servicios/consultorios", label: "Consultorios" }
+          { href: "/programas-terapeuticos", label: "Programas Terapéuticos" },
+          { href: "/programas-terapeuticos/consultorios", label: "Consultorios" }
         ]}
       />
 

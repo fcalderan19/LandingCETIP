@@ -6,8 +6,10 @@ export default function FeaturedStrip() {
       <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-6">
         <Link
           href="/rrhh"
-          className="group reveal relative overflow-hidden rounded-3xl bg-[var(--color-coral)] text-white p-8 md:p-10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+          className="group reveal relative overflow-hidden rounded-3xl text-white p-8 md:p-10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
         >
+          <img src="/img/taller-arte.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+          <div className="absolute inset-0 bg-[var(--color-coral)]/85 mix-blend-multiply" />
           <div className="absolute -right-10 -bottom-10 w-52 h-52 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-125" />
           <div className="relative">
             <span className="inline-block bg-white/20 text-xs font-semibold uppercase px-3 py-1 rounded-full">Sumate al equipo</span>
@@ -23,8 +25,10 @@ export default function FeaturedStrip() {
 
         <Link
           href="/nuestro-espacio"
-          className="group reveal relative overflow-hidden rounded-3xl bg-[var(--color-celeste)] text-white p-8 md:p-10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+          className="group reveal relative overflow-hidden rounded-3xl text-white p-8 md:p-10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
         >
+          <img src="/img/actividad-huerta.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+          <div className="absolute inset-0 bg-[var(--color-celeste)]/85 mix-blend-multiply" />
           <div className="absolute -left-10 -top-10 w-52 h-52 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-125" />
           <div className="relative">
             <span className="inline-block bg-white/20 text-xs font-semibold uppercase px-3 py-1 rounded-full">Visita virtual</span>

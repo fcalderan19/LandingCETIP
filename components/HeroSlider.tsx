@@ -19,28 +19,28 @@ const slides: Slide[] = [
     eyebrow: "Centro Educativo Terapéutico",
     title: "Acompañamos cada trayectoria con un enfoque cálido y profesional",
     desc: "Equipo interdisciplinario que diseña intervenciones personalizadas para niños, adolescentes y adultos.",
-    ctaHref: "/servicios",
+    ctaHref: "/programas-terapeuticos",
     ctaLabel: "Conocer servicios",
-    image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1600&q=70",
+    image: "/img/actividad-huerta.jpg",
     accent: "celeste"
+  },
+  {
+    eyebrow: "Talleres",
+    title: "Espacios grupales para fortalecer habilidades y vínculos",
+    desc: "Arte, expresión, autonomía, habilidades sociales y mucho más.",
+    ctaHref: "/programas-terapeuticos/talleres",
+    ctaLabel: "Ver talleres",
+    image: "/img/taller-arte.jpg",
+    accent: "naranja"
   },
   {
     eyebrow: "Consultorios Externos",
     title: "Atención individual con profesionales especializados",
     desc: "Psicología, fonoaudiología, terapia ocupacional, psicopedagogía, musicoterapia y más.",
-    ctaHref: "/servicios/consultorios",
+    ctaHref: "/programas-terapeuticos/consultorios",
     ctaLabel: "Reservar turno",
     image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1600&q=70",
     accent: "coral"
-  },
-  {
-    eyebrow: "Talleres 2026",
-    title: "Espacios grupales para fortalecer habilidades y vínculos",
-    desc: "Propuestas para niños, adolescentes y adultos jóvenes durante todo el año.",
-    ctaHref: "/servicios/talleres",
-    ctaLabel: "Ver talleres",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=70",
-    accent: "naranja"
   }
 ];
 
