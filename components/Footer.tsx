@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/lib/site";
 import { IconFacebook, IconInstagram } from "./Icons";
 
@@ -15,27 +16,27 @@ export default function Footer() {
           </div>
           <p className="mt-4 text-sm text-white/70">{site.tagline}</p>
           <div className="mt-4 flex gap-3">
-            <a href={site.socials.instagram} aria-label="Instagram" className="hover:text-[var(--color-celeste)]"><IconInstagram /></a>
-            <a href={site.socials.facebook} aria-label="Facebook" className="hover:text-[var(--color-celeste)]"><IconFacebook /></a>
+            <a href={site.socials.instagram} aria-label="Instagram" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block"><IconInstagram /></a>
+            <a href={site.socials.facebook} aria-label="Facebook" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block"><IconFacebook /></a>
           </div>
         </div>
 
         <div>
           <h4 className="font-semibold mb-3">Institución</h4>
           <ul className="space-y-2 text-sm text-white/80">
-            <li><a href="#quienes-somos" className="hover:text-[var(--color-celeste)]">Quiénes Somos</a></li>
-            <li><a href="#equipo" className="hover:text-[var(--color-celeste)]">Nuestro Equipo</a></li>
-            <li><a href="#espacio" className="hover:text-[var(--color-celeste)]">Nuestro Espacio</a></li>
-            <li><a href="#rrhh" className="hover:text-[var(--color-celeste)]">RRHH</a></li>
+            <li><Link href="/quienes-somos" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Quiénes Somos</Link></li>
+            <li><Link href="/equipo" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Nuestro Equipo</Link></li>
+            <li><Link href="/nuestro-espacio" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Nuestro Espacio</Link></li>
+            <li><Link href="/rrhh" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">RR.HH.</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-semibold mb-3">Servicios</h4>
           <ul className="space-y-2 text-sm text-white/80">
-            <li><a href="#cet" className="hover:text-[var(--color-celeste)]">CET</a></li>
-            <li><a href="#consultorios" className="hover:text-[var(--color-celeste)]">Consultorios Externos</a></li>
-            <li><a href="#talleres" className="hover:text-[var(--color-celeste)]">Talleres</a></li>
+            <li><Link href="/servicios/cet" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">CET</Link></li>
+            <li><Link href="/servicios/consultorios" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Consultorios Externos</Link></li>
+            <li><Link href="/servicios/talleres" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Talleres</Link></li>
           </ul>
         </div>
 
@@ -43,8 +44,8 @@ export default function Footer() {
           <h4 className="font-semibold mb-3">Contacto</h4>
           <ul className="space-y-2 text-sm text-white/80">
             <li>{site.address}</li>
-            <li><a href={`tel:${site.phoneTel}`} className="hover:text-[var(--color-celeste)]">{site.phoneDisplay}</a></li>
-            <li><a href={`mailto:${site.email}`} className="hover:text-[var(--color-celeste)]">{site.email}</a></li>
+            <li><a href={`tel:${site.phoneTel}`} className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">{site.phoneDisplay}</a></li>
+            <li><a href={`mailto:${site.email}`} className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">{site.email}</a></li>
             <li>{site.hours}</li>
           </ul>
         </div>

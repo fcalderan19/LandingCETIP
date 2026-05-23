@@ -18,7 +18,7 @@ export default function Contacto() {
             href={waLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 bg-[var(--color-verde)] hover:bg-[var(--color-verde-600)] text-white font-semibold px-6 py-3 rounded-full"
+            className="mt-6 inline-flex items-center gap-2 bg-[var(--color-verde)] hover:bg-[var(--color-verde-600)] text-white font-semibold px-6 py-3 rounded-full hover:-translate-y-0.5 hover:shadow-xl"
           >
             <IconWhatsapp /> Escribinos por WhatsApp
           </a>

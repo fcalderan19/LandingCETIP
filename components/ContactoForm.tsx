@@ -54,7 +54,7 @@ export default function ContactoForm() {
           </div>
           <div>
             <label className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">Motivo de consulta</label>
-            <select name="motivo" className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5">
+            <select name="motivo" className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none">
               <option value="">Seleccioná una opción</option>
               <option>CET</option>
               <option>Consultorios</option>
@@ -65,7 +65,7 @@ export default function ContactoForm() {
           </div>
           <div>
             <label className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">Mensaje</label>
-            <textarea name="mensaje" rows={5} className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5" />
+            <textarea name="mensaje" rows={5} className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none" />
             {errors.mensaje && <p className="text-xs text-[var(--color-coral)] mt-1">{errors.mensaje}</p>}
           </div>
 
@@ -76,7 +76,7 @@ export default function ContactoForm() {
           <div className="flex items-center gap-3">
             <button
               disabled={state === "loading"}
-              className="bg-[var(--color-coral)] hover:bg-[var(--color-coral-600)] disabled:opacity-60 text-white font-semibold px-6 py-3 rounded-full"
+              className="bg-[var(--color-coral)] hover:bg-[var(--color-coral-600)] disabled:opacity-60 text-white font-semibold px-6 py-3 rounded-full hover:-translate-y-0.5 hover:shadow-xl"
             >
               {state === "loading" ? "Enviando…" : "Enviar consulta"}
             </button>
@@ -93,7 +93,7 @@ function Field({ label, name, type = "text", error }: { label: string; name: str
   return (
     <div>
       <label htmlFor={name} className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">{label}</label>
-      <input id={name} name={name} type={type} className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5" />
+      <input id={name} name={name} type={type} className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none" />
       {error && <p className="text-xs text-[var(--color-coral)] mt-1">{error}</p>}
     </div>
   );

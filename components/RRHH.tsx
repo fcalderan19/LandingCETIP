@@ -51,7 +51,7 @@ export default function RRHH() {
           <Input name="profesion" label="Profesión / título" required />
           <div>
             <label className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">Experiencia</label>
-            <textarea name="experiencia" rows={4} required className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5" />
+            <textarea name="experiencia" rows={4} required className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none" />
           </div>
           <div>
             <label className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">CV (PDF)</label>
@@ -59,7 +59,7 @@ export default function RRHH() {
           </div>
           <button
             disabled={state === "loading"}
-            className="bg-[var(--color-verde)] hover:bg-[var(--color-verde-600)] disabled:opacity-60 text-white font-semibold px-6 py-3 rounded-full w-fit"
+            className="bg-[var(--color-verde)] hover:bg-[var(--color-verde-600)] disabled:opacity-60 text-white font-semibold px-6 py-3 rounded-full w-fit hover:-translate-y-0.5 hover:shadow-xl"
           >
             {state === "loading" ? "Enviando…" : "Enviar CV"}
           </button>
@@ -75,7 +75,7 @@ function Input({ name, label, type = "text", required }: { name: string; label: 
   return (
     <div>
       <label htmlFor={name} className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">{label}</label>
-      <input id={name} name={name} type={type} required={required} className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5" />
+      <input id={name} name={name} type={type} required={required} className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none" />
     </div>
   );
 }

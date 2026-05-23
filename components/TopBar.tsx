@@ -32,14 +32,14 @@ export default function TopBar() {
             href={waLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[var(--color-verde)] hover:bg-[var(--color-verde-600)] text-white px-3 py-1.5 rounded-full text-xs font-semibold"
+            className="inline-flex items-center gap-2 bg-[var(--color-verde)] hover:bg-[var(--color-verde-600)] text-white px-3 py-1.5 rounded-full text-xs font-semibold hover:-translate-y-0.5 hover:shadow-md"
           >
             <IconWhatsapp /> WhatsApp
           </a>
-          <a href={site.socials.instagram} aria-label="Instagram" className="hover:text-[var(--color-celeste)]">
+          <a href={site.socials.instagram} aria-label="Instagram" className="hover:text-[var(--color-celeste)] hover:scale-110">
             <IconInstagram />
           </a>
-          <a href={site.socials.facebook} aria-label="Facebook" className="hover:text-[var(--color-celeste)]">
+          <a href={site.socials.facebook} aria-label="Facebook" className="hover:text-[var(--color-celeste)] hover:scale-110">
             <IconFacebook />
           </a>
         </div>

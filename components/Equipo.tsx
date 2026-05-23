@@ -34,10 +34,10 @@ export default function Equipo() {
             <button
               key={d}
               onClick={() => setFiltro(d)}
-              className={`px-4 py-2 rounded-full text-sm font-medium border transition ${
+              className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 hover:-translate-y-0.5 ${
                 filtro === d
-                  ? "bg-[var(--color-petroleo)] text-white border-[var(--color-petroleo)]"
-                  : "bg-white text-[var(--color-petroleo)] border-[var(--color-petroleo-100)] hover:border-[var(--color-celeste)]"
+                  ? "bg-[var(--color-petroleo)] text-white border-[var(--color-petroleo)] shadow-md"
+                  : "bg-white text-[var(--color-petroleo)] border-[var(--color-petroleo-100)] hover:border-[var(--color-celeste)] hover:shadow"
               }`}
             >
               {d}
@@ -47,14 +47,14 @@ export default function Equipo() {
 
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {lista.map((p) => (
-            <article key={p.nombre} className="reveal bg-white rounded-2xl overflow-hidden shadow-sm border border-[var(--color-petroleo-100)] hover:shadow-md transition">
+            <article key={p.nombre} className="group reveal bg-white rounded-2xl overflow-hidden shadow-sm border border-[var(--color-petroleo-100)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[var(--color-celeste)]">
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={p.foto} alt={p.nombre} className="w-full h-full object-cover" loading="lazy" />
+                <img src={p.foto} alt={p.nombre} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
               </div>
               <div className="p-5">
-                <h3 className="font-semibold text-[var(--color-petroleo)]">{p.nombre}</h3>
+                <h3 className="font-semibold text-[var(--color-petroleo)] transition-colors group-hover:text-[var(--color-celeste-600)]">{p.nombre}</h3>
                 <p className="text-sm text-[var(--color-petroleo)]/70 mt-1">{p.rol}</p>
-                <span className="inline-block mt-3 text-xs font-medium px-2 py-1 rounded-full bg-[var(--color-celeste)]/15 text-[var(--color-celeste-600)]">
+                <span className="inline-block mt-3 text-xs font-medium px-2 py-1 rounded-full bg-[var(--color-celeste)]/15 text-[var(--color-celeste-600)] transition-colors group-hover:bg-[var(--color-celeste)] group-hover:text-white">
                   {p.disciplina}
                 </span>
               </div>

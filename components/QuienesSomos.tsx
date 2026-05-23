@@ -18,7 +18,7 @@ export default function QuienesSomos() {
               { t: "Visión", d: "Ser referentes en abordaje educativo-terapéutico." },
               { t: "Enfoque", d: "Centrado en la persona, su familia y su contexto." }
             ].map((b) => (
-              <div key={b.t} className="rounded-2xl border border-[var(--color-petroleo-100)] bg-white p-4 shadow-sm">
+              <div key={b.t} className="rounded-2xl border border-[var(--color-petroleo-100)] bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--color-coral)]">
                 <div className="font-semibold text-[var(--color-coral)]">{b.t}</div>
                 <p className="text-sm text-[var(--color-petroleo)]/80 mt-1">{b.d}</p>
               </div>
@@ -26,11 +26,11 @@ export default function QuienesSomos() {
           </div>
         </div>
         <div className="reveal order-1 md:order-2">
-          <div className="aspect-[5/4] rounded-3xl overflow-hidden shadow-xl">
+          <div className="aspect-[5/4] rounded-3xl overflow-hidden shadow-xl group">
             <img
               src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=70"
               alt="Equipo de profesionales conversando"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
             />
           </div>
