@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { waLink } from "@/lib/site";
 import { IconWhatsapp } from "./Icons";
@@ -75,9 +74,9 @@ export default function HeroSlider() {
               <h1 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">{s.title}</h1>
               <p className="mt-4 text-white/90 text-lg max-w-xl">{s.desc}</p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link href={s.ctaHref} className="bg-white text-[var(--color-petroleo)] font-semibold px-5 py-3 rounded-full hover:bg-white/90">
+                <a href={s.ctaHref} className="bg-white text-[var(--color-petroleo)] font-semibold px-5 py-3 rounded-full hover:bg-white/90">
                   {s.ctaLabel}
-                </Link>
+                </a>
                 <a href={waLink()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[var(--color-verde)] hover:bg-[var(--color-verde-600)] text-white font-semibold px-5 py-3 rounded-full">
                   <IconWhatsapp /> WhatsApp
                 </a>

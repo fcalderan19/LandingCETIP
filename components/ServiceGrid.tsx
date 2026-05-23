@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { IconBook, IconBrain, IconHand, IconHeart, IconMusic, IconUsers, IconSpeech } from "./Icons";
 
 const items = [
@@ -32,7 +31,7 @@ export default function ServiceGrid() {
           {items.map(({ href, color, icon: Icon, title, desc }, i) => {
             const a = accents[color];
             return (
-              <Link
+              <a
                 key={i}
                 href={href}
                 className={`group reveal block rounded-2xl bg-white border border-[var(--color-petroleo-100)] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${a.ring}`}
@@ -45,7 +44,7 @@ export default function ServiceGrid() {
                 <span className={`mt-4 inline-flex items-center gap-1 text-sm font-semibold ${a.text} transition-transform duration-300 group-hover:translate-x-1`}>
                   Ver más →
                 </span>
-              </Link>
+              </a>
             );
           })}
         </div>

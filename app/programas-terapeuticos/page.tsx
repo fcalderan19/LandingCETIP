@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { IconBook, IconBrain, IconHand, IconHeart, IconMusic, IconSpeech, IconUsers } from "@/components/Icons";
 
@@ -51,7 +50,7 @@ export default function Page() {
           {services.map(({ href, color, icon: Icon, title, desc, bullets }) => {
             const c = colors[color];
             return (
-              <Link
+              <a
                 key={href}
                 href={href}
                 className={`group reveal flex flex-col rounded-3xl bg-white border border-[var(--color-petroleo-100)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${c.ring} overflow-hidden`}
@@ -75,7 +74,7 @@ export default function Page() {
                     Ver más →
                   </span>
                 </div>
-              </Link>
+              </a>
             );
           })}
         </div>

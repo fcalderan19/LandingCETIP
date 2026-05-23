@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { IconCheck } from "@/components/Icons";
 
@@ -51,12 +50,12 @@ export default function Page() {
               ))}
             </ul>
 
-            <Link
+            <a
               href="/contacto?motivo=CET"
               className="mt-8 inline-flex items-center gap-1 bg-[var(--color-celeste)] hover:bg-[var(--color-celeste-600)] text-white font-semibold px-6 py-3 rounded-full transition-all hover:translate-x-1 hover:shadow-lg"
             >
               Solicitar info →
-            </Link>
+            </a>
           </div>
 
           <aside className="lg:col-span-2 reveal">

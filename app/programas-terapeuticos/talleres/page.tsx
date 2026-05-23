@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = { title: "Talleres | CETIP" };
@@ -41,12 +40,12 @@ export default function Page() {
                 <p className="text-sm text-[var(--color-petroleo)]/70 mt-3">
                   <strong className="text-[var(--color-petroleo)]">{t.dia}</strong> · {t.hora}
                 </p>
-                <Link
+                <a
                   href={`/contacto?motivo=Talleres&taller=${encodeURIComponent(t.titulo)}`}
                   className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-naranja-600)] transition-transform group-hover:translate-x-1"
                 >
                   Inscribirme →
-                </Link>
+                </a>
               </article>
             ))}
           </div>

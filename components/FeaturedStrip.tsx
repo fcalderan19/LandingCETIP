@@ -1,10 +1,9 @@
-import Link from "next/link";
 
 export default function FeaturedStrip() {
   return (
     <section className="py-16 md:py-20 bg-[var(--color-petroleo-50)]">
       <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-6">
-        <Link
+        <a
           href="/rrhh"
           className="group reveal relative overflow-hidden rounded-3xl text-white p-8 md:p-10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
         >
@@ -21,9 +20,9 @@ export default function FeaturedStrip() {
               Ir a RR.HH. →
             </span>
           </div>
-        </Link>
+        </a>
 
-        <Link
+        <a
           href="/nuestro-espacio"
           className="group reveal relative overflow-hidden rounded-3xl text-white p-8 md:p-10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
         >
@@ -40,7 +39,7 @@ export default function FeaturedStrip() {
               Ver galería →
             </span>
           </div>
-        </Link>
+        </a>
       </div>
     </section>
   );

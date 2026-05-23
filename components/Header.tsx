@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { nav } from "@/lib/nav";
@@ -17,7 +16,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-[var(--color-petroleo-100)]">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
+        <a href="/" className="flex items-center gap-3 group">
           <img
             src="/img/cetip-logo.png"
             alt="CETIP"
@@ -26,13 +25,13 @@ export default function Header() {
           <span className="hidden md:block text-[11px] leading-tight text-[var(--color-petroleo)]/70 max-w-[160px]">
             Centro Educativo Terapéutico y de Investigación Psiconeurológica
           </span>
-        </Link>
+        </a>
 
         <nav className="hidden lg:flex items-center gap-1">
           {nav.map((item) =>
             item.children ? (
               <div key={item.href} className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
-                <Link
+                <a
                   href={item.href}
                   data-active={isActive(item.href) || undefined}
                   className={`nav-link px-3 py-2 text-sm font-medium inline-flex items-center gap-1 ${
@@ -41,26 +40,26 @@ export default function Header() {
                 >
                   {item.label}{" "}
                   <IconChevronDown width={14} height={14} className={`transition-transform duration-300 ${drop ? "rotate-180" : ""}`} />
-                </Link>
+                </a>
                 {drop && (
                   <div className="absolute left-0 top-full pt-2 w-64 anim-pop">
                     <div className="bg-white rounded-xl shadow-xl border border-[var(--color-petroleo-100)] py-2 overflow-hidden">
                       {item.children.map((c) => (
-                        <Link
+                        <a
                           key={c.href}
                           href={c.href}
                           className="group flex items-center justify-between px-4 py-2.5 text-sm text-[var(--color-petroleo)] hover:bg-[var(--color-petroleo-50)] hover:text-[var(--color-celeste-600)] transition-colors"
                         >
                           <span>{c.label}</span>
                           <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--color-celeste)]">→</span>
-                        </Link>
+                        </a>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
             ) : (
-              <Link
+              <a
                 key={item.href}
                 href={item.href}
                 data-active={isActive(item.href) || undefined}
@@ -69,18 +68,18 @@ export default function Header() {
                 }`}
               >
                 {item.label}
-              </Link>
+              </a>
             )
           )}
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link
+          <a
             href="/contacto"
             className="hidden sm:inline-flex bg-[var(--color-coral)] hover:bg-[var(--color-coral-600)] text-white font-semibold px-4 py-2 rounded-full text-sm hover:-translate-y-0.5 hover:shadow-lg"
           >
             Contactanos
-          </Link>
+          </a>
           <button
             className="lg:hidden p-2 text-[var(--color-petroleo)]"
             onClick={() => setOpen((v) => !v)}
@@ -98,13 +97,13 @@ export default function Header() {
             {nav.map((item) => (
               <div key={item.href}>
                 <div className="flex items-center justify-between">
-                  <Link
+                  <a
                     href={item.href}
                     onClick={() => setOpen(false)}
                     className="block py-2 font-medium text-[var(--color-petroleo)]"
                   >
                     {item.label}
-                  </Link>
+                  </a>
                   {item.children && (
                     <button
                       aria-label="Abrir submenú"
@@ -118,14 +117,14 @@ export default function Header() {
                 {item.children && mobileSubOpen === item.href && (
                   <div className="pl-4 pb-2 anim-pop">
                     {item.children.map((c) => (
-                      <Link
+                      <a
                         key={c.href}
                         href={c.href}
                         onClick={() => setOpen(false)}
                         className="block py-1.5 text-sm text-[var(--color-petroleo)]/80 hover:text-[var(--color-celeste-600)] hover:translate-x-1"
                       >
                         {c.label}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 )}

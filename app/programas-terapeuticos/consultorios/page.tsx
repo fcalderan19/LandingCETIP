@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { IconBook, IconBrain, IconHand, IconHeart, IconMusic, IconSpeech } from "@/components/Icons";
 
@@ -51,12 +50,12 @@ export default function Page() {
           </div>
 
           <div className="text-center mt-12 reveal">
-            <Link
+            <a
               href="/contacto?motivo=Consultorios"
               className="inline-flex items-center gap-1 bg-[var(--color-coral)] hover:bg-[var(--color-coral-600)] text-white font-semibold px-6 py-3 rounded-full transition-all hover:translate-x-1 hover:shadow-lg"
             >
               Reservar turno →
-            </Link>
+            </a>
           </div>
         </div>
       </section>

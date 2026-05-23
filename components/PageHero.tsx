@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 type Crumb = { href: string; label: string };
 
@@ -21,14 +20,14 @@ export default function PageHero({
         {crumbs.length > 0 && (
           <nav aria-label="breadcrumb" className="text-xs text-white/75 mb-3">
             <ol className="flex flex-wrap items-center gap-1">
-              <li><Link href="/" className="hover:underline">Inicio</Link></li>
+              <li><a href="/" className="hover:underline">Inicio</a></li>
               {crumbs.map((c, i) => (
                 <li key={c.href} className="flex items-center gap-1">
                   <span>/</span>
                   {i === crumbs.length - 1 ? (
                     <span className="text-white">{c.label}</span>
                   ) : (
-                    <Link href={c.href} className="hover:underline">{c.label}</Link>
+                    <a href={c.href} className="hover:underline">{c.label}</a>
                   )}
                 </li>
               ))}

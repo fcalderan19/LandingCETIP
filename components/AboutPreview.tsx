@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 export default function AboutPreview() {
   return (
@@ -14,12 +13,12 @@ export default function AboutPreview() {
             equipo interdisciplinario trabaja en conjunto con familias, escuelas y profesionales
             derivantes para acompañar procesos de aprendizaje, autonomía y bienestar.
           </p>
-          <Link
+          <a
             href="/quienes-somos"
             className="mt-6 inline-flex items-center gap-1 bg-[var(--color-petroleo)] hover:bg-[var(--color-petroleo-700)] text-white font-semibold px-5 py-3 rounded-full transition-transform hover:translate-x-1"
           >
             Conocer más →
-          </Link>
+          </a>
         </div>
         <div className="reveal order-1 md:order-2">
           <div className="relative aspect-[5/4] rounded-3xl overflow-hidden shadow-xl group">

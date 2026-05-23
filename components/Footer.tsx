@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { site } from "@/lib/site";
 import { IconFacebook, IconInstagram } from "./Icons";
 
@@ -25,19 +24,19 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3">Institución</h4>
           <ul className="space-y-2 text-sm text-white/80">
-            <li><Link href="/quienes-somos" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Quiénes Somos</Link></li>
-            <li><Link href="/nuestro-espacio" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Nuestro Espacio</Link></li>
-            <li><Link href="/admision" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Formulario de Admisión</Link></li>
-            <li><Link href="/rrhh" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">RR.HH.</Link></li>
+            <li><a href="/quienes-somos" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Quiénes Somos</a></li>
+            <li><a href="/nuestro-espacio" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Nuestro Espacio</a></li>
+            <li><a href="/admision" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Formulario de Admisión</a></li>
+            <li><a href="/rrhh" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">RR.HH.</a></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-semibold mb-3">Programas</h4>
           <ul className="space-y-2 text-sm text-white/80">
-            <li><Link href="/programas-terapeuticos/cet" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">CET</Link></li>
-            <li><Link href="/programas-terapeuticos/consultorios" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Consultorios Externos</Link></li>
-            <li><Link href="/programas-terapeuticos/talleres" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Talleres</Link></li>
+            <li><a href="/programas-terapeuticos/cet" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">CET</a></li>
+            <li><a href="/programas-terapeuticos/consultorios" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Consultorios Externos</a></li>
+            <li><a href="/programas-terapeuticos/talleres" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Talleres</a></li>
           </ul>
         </div>
 
