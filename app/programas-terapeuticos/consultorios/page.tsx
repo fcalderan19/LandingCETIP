@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { IconBook, IconBrain, IconHand, IconHeart, IconMusic, IconSpeech } from "@/components/Icons";
 
-export const metadata: Metadata = { title: "Consultorios Externos | CETIP" };
+export const metadata: Metadata = { title: "Tratamiento en Consultorios Externos | CETIP" };
 
 const especialidades = [
   { icon: IconBrain, label: "Psicología" },
@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <>
       <PageHero
-        title="Consultorios Externos"
+        title="Tratamiento en Consultorios Externos"
         subtitle="Atención individual con profesionales especializados en distintas disciplinas."
         image="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1600&q=70"
         crumbs={[

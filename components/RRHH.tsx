@@ -1,6 +1,15 @@
 "use client";
 import { FormEvent, useState } from "react";
 
+const areas = [
+  "Centro Educativo Terapéutico",
+  "Tratamiento en Consultorios Externos",
+  "Talleres",
+  "Evaluaciones Diagnósticas",
+  "Administración",
+  "Otra"
+];
+
 export default function RRHH() {
   const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
 
@@ -19,17 +28,17 @@ export default function RRHH() {
   }
 
   return (
-    <section id="rrhh" className="py-16 md:py-24 bg-white">
+    <section id="rrhh-form" className="py-16 md:py-24 bg-white scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-12 items-start">
         <div className="reveal">
-          <span className="text-xs font-semibold uppercase text-[var(--color-celeste-600)]">RRHH</span>
+          <span className="text-xs font-semibold uppercase text-[var(--color-celeste-600)]">Postulate</span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-[var(--color-petroleo)]">
-            Sumate al equipo
+            Cargá tu CV
           </h2>
           <p className="mt-4 text-[var(--color-petroleo)]/80">
-            Buscamos profesionales con vocación, formación sólida y trabajo en equipo. Si te interesa
-            sumarte a CETIP, dejanos tus datos y tu CV. Nos pondremos en contacto cuando haya una
-            búsqueda compatible.
+            Buscamos profesionales con vocación, formación sólida y trabajo en equipo. Si te
+            interesa sumarte a CETIP, dejanos tus datos y tu CV. Nos pondremos en contacto cuando
+            haya una búsqueda compatible.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-[var(--color-petroleo)]/80">
             <li>• Capacitación interna continua</li>
@@ -49,6 +58,22 @@ export default function RRHH() {
             <Input name="telefono" label="Teléfono" type="tel" required />
           </div>
           <Input name="profesion" label="Profesión / título" required />
+
+          <div>
+            <label htmlFor="area_interes" className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">
+              Área en la que te interesaría postularte
+            </label>
+            <select
+              id="area_interes"
+              name="area_interes"
+              required
+              className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none"
+            >
+              <option value="">Seleccioná un área</option>
+              {areas.map((a) => <option key={a}>{a}</option>)}
+            </select>
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">Experiencia</label>
             <textarea name="experiencia" rows={4} required className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none" />

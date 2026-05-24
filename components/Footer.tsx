@@ -34,9 +34,10 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3">Programas</h4>
           <ul className="space-y-2 text-sm text-white/80">
-            <li><a href="/programas-terapeuticos/cet" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">CET</a></li>
-            <li><a href="/programas-terapeuticos/consultorios" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Consultorios Externos</a></li>
+            <li><a href="/programas-terapeuticos/cet" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Centro Educativo Terapéutico</a></li>
+            <li><a href="/programas-terapeuticos/consultorios" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Tratamiento en Consultorios Externos</a></li>
             <li><a href="/programas-terapeuticos/talleres" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Talleres</a></li>
+            <li><a href="/programas-terapeuticos/evaluaciones-diagnosticas" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">Evaluaciones Diagnósticas</a></li>
           </ul>
         </div>
 

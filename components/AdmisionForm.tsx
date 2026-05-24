@@ -3,7 +3,15 @@ import { FormEvent, useState } from "react";
 
 type State = "idle" | "loading" | "ok" | "error";
 
-const programas = ["CET", "Consultorios Externos", "Talleres", "A definir con el equipo"];
+const programas = [
+  "Centro Educativo Terapéutico",
+  "Tratamiento en Consultorios Externos",
+  "Talleres",
+  "Evaluaciones Diagnósticas",
+  "A definir con el equipo"
+];
+
+const tratamientoActual = ["Sí", "No"];
 
 export default function AdmisionForm() {
   const [state, setState] = useState<State>("idle");
@@ -34,20 +42,19 @@ export default function AdmisionForm() {
           onSubmit={onSubmit}
           className="reveal bg-white rounded-3xl shadow-sm border border-[var(--color-petroleo-100)] p-6 md:p-10 grid gap-6"
         >
-          <Block title="Datos del paciente" color="celeste">
+          <Block title="Datos de quien solicita tratamiento" color="celeste">
             <Grid2>
               <Field name="paciente_nombre" label="Nombre y apellido" required />
               <Field name="paciente_dni" label="DNI" required />
               <Field name="paciente_nacimiento" label="Fecha de nacimiento" type="date" required />
-              <Field name="paciente_edad" label="Edad" type="number" />
+              <Field name="paciente_escolaridad" label="Escolaridad" />
             </Grid2>
-            <Field name="paciente_diagnostico" label="Diagnóstico (si lo tiene)" />
           </Block>
 
           <Block title="Datos del responsable / familiar" color="coral">
             <Grid2>
               <Field name="responsable_nombre" label="Nombre y apellido" required />
-              <Field name="responsable_vinculo" label="Vínculo con el paciente" required />
+              <Field name="responsable_vinculo" label="Vínculo con el solicitante" required />
               <Field name="responsable_telefono" label="Teléfono" type="tel" required />
               <Field name="responsable_email" label="Email" type="email" required />
             </Grid2>
@@ -57,31 +64,56 @@ export default function AdmisionForm() {
           <Block title="Cobertura y derivación" color="naranja">
             <Grid2>
               <Field name="obra_social" label="Obra social / prepaga" />
-              <Field name="numero_afiliado" label="Nº de afiliado" />
               <Field name="derivante" label="Profesional derivante" />
               <Select name="programa" label="Programa de interés" options={programas} required />
             </Grid2>
           </Block>
 
-          <Block title="Información adicional" color="celeste">
+          <Block title="Perfil de Desarrollo y Salud" color="celeste">
+            <Field name="diagnostico" label="Diagnóstico clínico (si lo tiene)" />
+
             <div>
               <label className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">
-                Tratamientos actuales o previos
+                ¿Se encuentra bajo algún tratamiento terapéutico actualmente?
               </label>
-              <textarea
-                name="tratamientos"
-                rows={3}
+              <div className="flex gap-4">
+                {tratamientoActual.map((opt) => (
+                  <label key={opt} className="inline-flex items-center gap-2 text-sm text-[var(--color-petroleo)] cursor-pointer">
+                    <input type="radio" name="tratamiento_actual" value={opt} className="accent-[var(--color-celeste)]" />
+                    {opt}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">
+                Si la respuesta es sí, indicá cuál
+              </label>
+              <input
+                name="tratamiento_detalle"
                 className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none"
               />
             </div>
+
             <div>
               <label className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">
-                Motivo de consulta
+                Breve descripción de los aspectos conductuales del consultante
               </label>
               <textarea
-                name="motivo"
+                name="aspectos_conductuales"
                 rows={4}
-                required
+                className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-[var(--color-petroleo)] mb-1">
+                Información adicional que considere pertinente mencionar
+              </label>
+              <textarea
+                name="info_adicional"
+                rows={3}
                 className="w-full rounded-xl border border-[var(--color-petroleo-100)] bg-white px-3 py-2.5 transition-all focus:border-[var(--color-celeste)] focus:ring-2 focus:ring-[var(--color-celeste)]/20 focus:outline-none"
               />
             </div>
@@ -124,7 +156,7 @@ const ringColor: Record<string, string> = {
 function Block({ title, color, children }: { title: string; color: string; children: React.ReactNode }) {
   return (
     <fieldset className="grid gap-4">
-      <legend className="flex items-center gap-2 text-[var(--color-petroleo)] font-semibold">
+      <legend className="flex items-center gap-2 text-[var(--color-petroleo)] font-semibold text-lg">
         <span className={`inline-block h-2.5 w-2.5 rounded-full ${ringColor[color]}`} />
         {title}
       </legend>

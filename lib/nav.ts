@@ -11,9 +11,10 @@ export const nav: NavItem[] = [
     href: "/programas-terapeuticos",
     label: "Programas Terapéuticos",
     children: [
-      { href: "/programas-terapeuticos/cet", label: "CET" },
-      { href: "/programas-terapeuticos/consultorios", label: "Consultorios Externos" },
-      { href: "/programas-terapeuticos/talleres", label: "Talleres" }
+      { href: "/programas-terapeuticos/cet", label: "Centro Educativo Terapéutico" },
+      { href: "/programas-terapeuticos/consultorios", label: "Tratamiento en Consultorios Externos" },
+      { href: "/programas-terapeuticos/talleres", label: "Talleres" },
+      { href: "/programas-terapeuticos/evaluaciones-diagnosticas", label: "Evaluaciones Diagnósticas" }
     ]
   },
   { href: "/nuestro-espacio", label: "Nuestro Espacio" },
