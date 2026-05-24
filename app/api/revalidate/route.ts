@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
       busqueda: "busquedas"
     };
     const tag = tagMap[body._type];
-    if (tag) revalidateTag(tag, "max");
+    if (tag) revalidateTag(tag);
 
     return NextResponse.json({ ok: true, revalidated: tag ?? null, type: body._type });
   } catch (e) {
