@@ -1,6 +1,9 @@
+import { sanityFetch } from "@/sanity/lib/client";
+import { busquedasQuery } from "@/sanity/lib/queries";
 import { IconCheck } from "./Icons";
 
 type Busqueda = {
+  _id?: string;
   titulo: string;
   area: string;
   modalidad: string;
@@ -8,10 +11,10 @@ type Busqueda = {
   descripcion?: string;
 };
 
-const busquedas: Busqueda[] = [
+const fallback: Busqueda[] = [
   {
     titulo: "Fonoaudióloga/o",
-    area: "Consultorios Externos",
+    area: "Tratamiento en Consultorios Externos",
     modalidad: "Presencial",
     jornada: "Tarde",
     descripcion: "Para sumarse al equipo de tratamientos individuales con niños y adolescentes."
@@ -25,15 +28,21 @@ const busquedas: Busqueda[] = [
   },
   {
     titulo: "Psicólogo/a Infantil",
-    area: "Consultorios Externos",
+    area: "Tratamiento en Consultorios Externos",
     modalidad: "Presencial",
     jornada: "Mañana",
     descripcion: "Atención clínica individual a niños de 6 a 12 años. Experiencia en TEA deseable."
   }
 ];
 
-export default function BusquedasActivas() {
-  if (busquedas.length === 0) return null;
+export default async function BusquedasActivas() {
+  const busquedas = await sanityFetch<Busqueda[]>({
+    query: busquedasQuery,
+    tags: ["busquedas"],
+    fallback
+  });
+
+  if (!busquedas || busquedas.length === 0) return null;
 
   return (
     <section className="py-16 md:py-20 bg-[var(--color-petroleo-50)]">
@@ -51,7 +60,7 @@ export default function BusquedasActivas() {
         <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {busquedas.map((b) => (
             <article
-              key={b.titulo}
+              key={b._id ?? b.titulo}
               className="group reveal rounded-2xl bg-white border border-[var(--color-petroleo-100)] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[var(--color-coral)]"
             >
               <div className="flex items-start gap-3">
@@ -59,9 +68,7 @@ export default function BusquedasActivas() {
                   <IconCheck />
                 </span>
                 <div className="grow">
-                  <h3 className="font-semibold text-[var(--color-petroleo)] leading-tight">
-                    {b.titulo}
-                  </h3>
+                  <h3 className="font-semibold text-[var(--color-petroleo)] leading-tight">{b.titulo}</h3>
                   <p className="text-xs text-[var(--color-petroleo)]/60 mt-0.5">{b.area}</p>
                 </div>
               </div>
@@ -74,9 +81,11 @@ export default function BusquedasActivas() {
                 <span className="text-xs font-medium px-2 py-1 rounded-full bg-[var(--color-celeste)]/15 text-[var(--color-celeste-600)]">
                   {b.modalidad}
                 </span>
-                <span className="text-xs font-medium px-2 py-1 rounded-full bg-[var(--color-naranja)]/15 text-[var(--color-naranja-600)]">
-                  {b.jornada}
-                </span>
+                {b.jornada && (
+                  <span className="text-xs font-medium px-2 py-1 rounded-full bg-[var(--color-naranja)]/15 text-[var(--color-naranja-600)]">
+                    {b.jornada}
+                  </span>
+                )}
               </div>
 
               <a
