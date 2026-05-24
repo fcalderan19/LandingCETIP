@@ -1,17 +1,21 @@
 import { createClient, type SanityClient } from "next-sanity";
 import { apiVersion, dataset, isConfigured, projectId } from "../env";
 
+const stegaStudioUrl =
+  process.env.SANITY_STUDIO_URL ||
+  "https://cetip.sanity.studio";
+
 export const client: SanityClient | null = isConfigured
   ? createClient({
       projectId,
       dataset,
       apiVersion,
       useCdn: true,
-      perspective: "published"
+      perspective: "published",
+      stega: { studioUrl: stegaStudioUrl, enabled: true }
     })
   : null;
 
-/** Safe fetch: returns fallback if Sanity is not configured or call fails. */
 export async function sanityFetch<T>(opts: {
   query: string;
   params?: Record<string, unknown>;
