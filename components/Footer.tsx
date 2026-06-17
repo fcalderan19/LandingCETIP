@@ -1,7 +1,8 @@
-import { site } from "@/lib/site";
+import { getSiteSettings } from "@/lib/site-settings";
 import { IconFacebook, IconInstagram } from "./Icons";
 
-export default function Footer() {
+export default async function Footer() {
+  const s = await getSiteSettings();
   return (
     <footer className="bg-[var(--color-petroleo)] text-white">
       <div className="mx-auto max-w-7xl px-4 py-12 grid md:grid-cols-4 gap-8">
@@ -14,10 +15,14 @@ export default function Footer() {
               Centro Educativo Terapéutico y de Investigación Psiconeurológica
             </div>
           </div>
-          <p className="mt-4 text-sm text-white/70">{site.tagline}</p>
+          <p className="mt-4 text-sm text-white/70">{s.tagline}</p>
           <div className="mt-4 flex gap-3">
-            <a href={site.socials.instagram} aria-label="Instagram" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block"><IconInstagram /></a>
-            <a href={site.socials.facebook} aria-label="Facebook" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block"><IconFacebook /></a>
+            <a href={s.socials.instagram} aria-label="Instagram" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">
+              <IconInstagram />
+            </a>
+            <a href={s.socials.facebook} aria-label="Facebook" className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">
+              <IconFacebook />
+            </a>
           </div>
         </div>
 
@@ -44,10 +49,10 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3">Contacto</h4>
           <ul className="space-y-2 text-sm text-white/80">
-            <li>{site.address}</li>
-            <li><a href={`tel:${site.phoneTel}`} className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">{site.phoneDisplay}</a></li>
-            <li><a href={`mailto:${site.email}`} className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">{site.email}</a></li>
-            <li>{site.hours}</li>
+            <li>{s.address}</li>
+            <li><a href={`tel:${s.phoneTel}`} className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">{s.phoneDisplay}</a></li>
+            <li><a href={`mailto:${s.email}`} className="hover:text-[var(--color-celeste)] hover:translate-x-1 inline-block">{s.email}</a></li>
+            <li>{s.hours}</li>
           </ul>
         </div>
       </div>

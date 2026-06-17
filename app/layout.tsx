@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import "./globals.css";
 import { site } from "@/lib/site";
 import TopBar from "@/components/TopBar";
@@ -31,7 +32,11 @@ const ldJson = {
   sameAs: [site.socials.instagram, site.socials.facebook]
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const h = await headers();
+  const pathname = h.get("x-pathname") ?? "";
+  const isAdmin = pathname.startsWith("/admin");
+
   return (
     <html lang="es-AR">
       <head>
@@ -47,18 +52,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white focus:px-3 focus:py-2 focus:rounded-md focus:shadow"
-        >
-          Saltar al contenido
-        </a>
-        <TopBar />
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
-        <FloatingWhatsapp />
-        <RevealObserver />
+        {isAdmin ? (
+          children
+        ) : (
+          <>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white focus:px-3 focus:py-2 focus:rounded-md focus:shadow"
+            >
+              Saltar al contenido
+            </a>
+            <TopBar />
+            <Header />
+            <main id="main">{children}</main>
+            <Footer />
+            <FloatingWhatsapp />
+            <RevealObserver />
+          </>
+        )}
       </body>
     </html>
   );

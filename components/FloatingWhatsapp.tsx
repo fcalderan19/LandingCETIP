@@ -1,10 +1,11 @@
-import { waLink } from "@/lib/site";
+import { getSiteSettings, waLinkFor } from "@/lib/site-settings";
 import { IconWhatsapp } from "./Icons";
 
-export default function FloatingWhatsapp() {
+export default async function FloatingWhatsapp() {
+  const s = await getSiteSettings();
   return (
     <a
-      href={waLink()}
+      href={waLinkFor(s.whatsappNumber, s.whatsappMessage)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Abrir chat de WhatsApp"
