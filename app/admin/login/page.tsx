@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { signIn } from "@/auth";
 import { safeCallbackUrl } from "@/lib/safe-redirect";
 
@@ -13,40 +14,89 @@ export default async function LoginPage({
   const error = params.error;
 
   return (
-    <main className="min-h-screen grid place-items-center bg-[var(--color-petroleo-50)] text-[var(--color-petroleo)] px-4">
-      <div className="bg-white rounded-2xl shadow-md border border-[var(--color-petroleo-100)] p-8 max-w-md w-full">
-        <h1 className="text-2xl font-bold">Admin CETIP</h1>
-        <p className="text-sm text-[var(--color-petroleo)]/70 mt-2">
-          Iniciá sesión con tu cuenta de Google autorizada.
-        </p>
+    <main className="min-h-screen grid md:grid-cols-2 bg-white text-[var(--color-petroleo)]">
+      {/* Left: brand panel */}
+      <aside className="relative hidden md:flex flex-col justify-between p-10 bg-[var(--color-petroleo)] text-white overflow-hidden">
+        {/* Decorative background blobs */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-[var(--color-celeste)]/25 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-32 -right-24 h-96 w-96 rounded-full bg-white/10 blur-3xl"
+        />
 
-        <form
-          action={async () => {
-            "use server";
-            await signIn("google", { redirectTo: callbackUrl });
-          }}
-          className="mt-6"
-        >
-          <button
-            type="submit"
-            className="w-full inline-flex items-center justify-center gap-3 bg-white border border-[var(--color-petroleo-100)] hover:border-[var(--color-petroleo)] text-[var(--color-petroleo)] font-semibold px-4 py-2.5 rounded-full shadow-sm hover:shadow-md transition"
-          >
-            <GoogleIcon />
-            Continuar con Google
-          </button>
-        </form>
+        <div className="relative flex items-center gap-3">
+          <Image
+            src="/img/cetip-logo-dark.png"
+            alt="CETIP"
+            width={140}
+            height={44}
+            priority
+            className="h-10 w-auto object-contain"
+          />
+        </div>
 
-        {error && (
-          <p className="mt-4 text-sm text-[var(--color-coral)] bg-[var(--color-coral)]/10 px-3 py-2 rounded-lg">
-            No pudimos iniciar sesión. Verificá que tu email esté autorizado.
+        <div className="relative">
+          <h2 className="text-4xl font-bold leading-tight max-w-sm">
+            Panel de administración
+          </h2>
+          <p className="mt-3 text-white/70 max-w-sm text-sm leading-relaxed">
+            Editá el contenido del sitio, revisá el buzón de contactos y
+            gestioná la información institucional del CETIP.
           </p>
-        )}
+        </div>
 
-        <p className="mt-6 text-[11px] text-[var(--color-petroleo)]/60 leading-snug">
-          Solo cuentas autorizadas (lista blanca en la base de datos) pueden
-          acceder al panel.
-        </p>
-      </div>
+        <div className="relative flex items-center gap-2 text-xs text-white/50">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-verde)]" />
+          Acceso restringido
+        </div>
+      </aside>
+
+      {/* Right: login card */}
+      <section className="flex items-center justify-center px-6 py-12">
+        <div className="w-full max-w-sm">
+          {/* Small brand for mobile (left panel is hidden) */}
+          <div className="md:hidden mb-8 flex items-center justify-center">
+            <Image
+              src="/img/cetip-logo-transparent.png"
+              alt="CETIP"
+              width={120}
+              height={40}
+              priority
+              className="h-9 w-auto object-contain"
+            />
+          </div>
+
+          <h1 className="text-2xl font-bold">Ingresar al panel</h1>
+          <p className="text-sm text-[var(--color-petroleo)]/70 mt-2">
+            Iniciá sesión con tu cuenta de Google autorizada.
+          </p>
+
+          {error && (
+            <p className="mt-5 text-sm text-[var(--color-coral)] bg-[var(--color-coral)]/10 px-3 py-2 rounded-lg">
+              No pudimos iniciar sesión. Verificá que tu email esté autorizado.
+            </p>
+          )}
+
+          <form
+            action={async () => {
+              "use server";
+              await signIn("google", { redirectTo: callbackUrl });
+            }}
+            className="mt-6"
+          >
+            <button
+              type="submit"
+              className="w-full inline-flex items-center justify-center gap-3 bg-white border border-[var(--color-petroleo-100)] hover:border-[var(--color-petroleo)] text-[var(--color-petroleo)] font-semibold px-4 py-3 rounded-full shadow-sm hover:shadow-md transition"
+            >
+              <GoogleIcon />
+              Continuar con Google
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
   );
 }
