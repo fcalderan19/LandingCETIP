@@ -30,6 +30,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      // Always show Google's account chooser. Without this, Google
+      // auto-picks whichever account is already active in the browser,
+      // which is inconvenient when the user's default Google account
+      // isn't the one that's allowlisted here.
+      authorization: {
+        params: { prompt: "select_account" },
+      },
       profile(profile) {
         return {
           id: profile.sub,
