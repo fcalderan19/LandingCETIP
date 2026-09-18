@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import type { SVGProps, ReactElement } from "react";
 
 type IconProps = SVGProps<SVGSVGElement> & { size?: number };
 
@@ -547,7 +547,7 @@ export function IconAlignRight(p: IconProps) {
   );
 }
 
-const REGISTRY: Record<string, (p: IconProps) => JSX.Element> = {
+const REGISTRY: Record<string, (p: IconProps) => ReactElement> = {
   Slideshow: IconSlideshow,
   Grid: IconGrid,
   Article: IconArticle,

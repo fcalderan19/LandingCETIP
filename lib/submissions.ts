@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 
 export const SubmissionKindSchema = z.enum([
@@ -51,8 +52,8 @@ export async function recordSubmission(input: SubmissionInput): Promise<{
         phone: clip(input.phone, 60),
         subject: clip(input.subject, 240),
         message: clip(input.message, MAX_MESSAGE),
-        attachments: input.attachments ?? undefined,
-        meta: input.meta ?? undefined,
+        attachments: (input.attachments ?? undefined) as Prisma.InputJsonValue | undefined,
+        meta: (input.meta ?? undefined) as Prisma.InputJsonValue | undefined,
       },
       select: { id: true },
     });

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, type ReactElement } from "react";
 import { updateSiteSettings } from "@/app/admin/_actions/settings";
 import type {
   HeaderConfigShape,
@@ -34,7 +34,7 @@ type Settings = {
 
 type TabId = "general" | "contacto" | "redes" | "header" | "footer";
 
-const TABS: { id: TabId; label: string; hint: string; Icon: (p: { size?: number }) => JSX.Element }[] = [
+const TABS: { id: TabId; label: string; hint: string; Icon: (p: { size?: number }) => ReactElement }[] = [
   { id: "general", label: "General", hint: "Nombre, tagline y descripción.", Icon: IconInfo },
   { id: "contacto", label: "Contacto", hint: "Teléfono, email, dirección y horarios.", Icon: IconMail },
   { id: "redes", label: "Redes sociales", hint: "Instagram, Facebook y otros perfiles.", Icon: IconUsers },

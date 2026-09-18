@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
 import {
   IconH1,
   IconH2,
@@ -58,7 +58,7 @@ type PrimitiveDef = {
   label: string;
   description: string;
   category: CategoryKey;
-  Icon: (p: { size?: number }) => JSX.Element;
+  Icon: (p: { size?: number }) => ReactElement;
   createDefaults: () => Partial<BlockElement>;
 };
 

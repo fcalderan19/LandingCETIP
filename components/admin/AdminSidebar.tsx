@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactElement } from "react";
 import {
   IconHome,
   IconPages,
@@ -19,7 +19,7 @@ import {
 type NavItem = {
   href: string;
   label: string;
-  Icon: (p: { size?: number }) => JSX.Element;
+  Icon: (p: { size?: number }) => ReactElement;
   matches: (path: string) => boolean;
 };
 
