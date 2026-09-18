@@ -30,10 +30,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      // Always show Google's account chooser. Without this, Google
-      // auto-picks whichever account is already active in the browser,
-      // which is inconvenient when the user's default Google account
-      // isn't the one that's allowlisted here.
+      // Pre-seeded User rows (email inserted by SQL/seed before the person
+      // ever logged in) have no linked Account row. Without this flag,
+      // NextAuth refuses to link the OAuth identity to the existing User
+      // and returns OAuthAccountNotLinked. Safe here because we only
+      // accept Google as a provider (no other provider can claim the same
+      // email) and every sign-in still passes through the DB allowlist.
+      allowDangerousEmailAccountLinking: true,
+      // Always show Google's account chooser.
       authorization: {
         params: { prompt: "select_account" },
       },
