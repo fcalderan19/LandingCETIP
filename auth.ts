@@ -61,11 +61,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return baseUrl;
     },
-    async signIn({ user, profile, account }) {
+    async signIn({ user }) {
       const email = user.email?.toLowerCase().trim();
-      if (!email) return false;
-      // Google itself must have verified the address.
-      if (account?.provider === "google" && profile && profile.email_verified === false) {
+      if (!email) {
+        console.warn("[auth] signIn rejected: no email in Google profile");
         return false;
       }
       try {
@@ -73,8 +72,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           where: { email },
           select: { id: true, active: true },
         });
-        if (!row || !row.active) return false;
-        // Audit trail.
+        if (!row) {
+          console.warn("[auth] signIn rejected: no User row for", email);
+          return false;
+        }
+        if (!row.active) {
+          console.warn("[auth] signIn rejected: User is inactive:", email);
+          return false;
+        }
         await db.user.update({
           where: { id: row.id },
           data: { lastLoginAt: new Date() },
