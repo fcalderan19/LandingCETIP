@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { requireAdmin } from "@/lib/auth-server";
 import { fail, ok, revalidate, runAction, type ActionResult } from "@/lib/actions";
 import { SITE_SETTINGS_TAG } from "@/lib/site-settings";
+import { HeaderConfigSchema, FooterConfigSchema } from "@/lib/settings-schemas";
 
 const SocialsSchema = z
   .record(z.string(), z.string())
@@ -27,6 +28,8 @@ const SiteSettingsInput = z.object({
   hours: z.string().min(1).max(200),
   socials: SocialsSchema,
   mapsEmbed: z.string().min(1).max(1000),
+  headerConfig: HeaderConfigSchema.optional(),
+  footerConfig: FooterConfigSchema.optional(),
 });
 
 export async function getSiteSettingsForEdit() {

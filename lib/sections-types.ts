@@ -10,7 +10,8 @@ export type FieldKind =
   | "link"
   | "color"
   | "boolean"
-  | "array";
+  | "array"
+  | "block_elements";
 
 export type SelectOption = { value: string; label: string };
 

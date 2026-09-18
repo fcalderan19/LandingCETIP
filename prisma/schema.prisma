@@ -53,6 +53,8 @@ model SiteSettings {
   hours           String
   socials         Json
   mapsEmbed       String
+  headerConfig    Json?
+  footerConfig    Json?
 }
 
 // -------- Colecciones --------
@@ -116,17 +118,25 @@ model MediaAsset {
 
 // -------- Auth (Auth.js v5 / @auth/prisma-adapter) --------
 
+// Auth allowlist. Only admins exist — a Google login is accepted iff a User
+// row exists for the lowercased email AND active === true. Deleting a row or
+// flipping `active` to false revokes access on the next request.
+// New rows default to active=false so a Google account auto-created by the
+// adapter cannot self-provision as admin: someone with DB access must flip
+// active=true explicitly.
 model User {
   id            String       @id @default(cuid())
   name          String?
   email         String       @unique
   emailVerified DateTime?
   image         String?
-  role          String       @default("admin")
+  active        Boolean      @default(false)
+  lastLoginAt   DateTime?
   accounts      Account[]
   sessions      Session[]
   uploads       MediaAsset[]
   createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt @default(now())
 }
 
 model Account {
@@ -164,7 +174,23 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model AllowedEmail {
-  email     String   @id
-  createdAt DateTime @default(now())
+// -------- Buzón (form submissions) --------
+
+model Submission {
+  id          String   @id @default(cuid())
+  kind        String   // "contacto" | "admision" | "rrhh" | otro
+  pageSlug    String?
+  name        String?
+  email       String?
+  phone       String?
+  subject     String?
+  message     String?  @db.Text
+  attachments Json?    // arreglo de {url, filename, size, mime}
+  meta        Json?    // ip, ua, extras
+  read        Boolean  @default(false)
+  archived    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([kind, createdAt])
+  @@index([read, archived])
 }

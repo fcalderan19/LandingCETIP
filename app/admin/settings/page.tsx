@@ -1,6 +1,12 @@
 import SettingsForm from "@/components/admin/SettingsForm";
 import AdminContainer from "@/components/admin/AdminContainer";
 import { getSiteSettingsForEdit } from "@/app/admin/_actions/settings";
+import {
+  DEFAULT_HEADER_CONFIG,
+  DEFAULT_FOOTER_CONFIG,
+  type HeaderConfigShape,
+  type FooterConfigShape,
+} from "@/lib/site-settings";
 
 export const dynamic = "force-dynamic";
 
@@ -17,28 +23,38 @@ export default async function SettingsRoute() {
     );
   }
   const row = res.data;
+  const headerConfig: HeaderConfigShape = {
+    ...DEFAULT_HEADER_CONFIG,
+    ...((row.headerConfig as Partial<HeaderConfigShape> | null) ?? {}),
+  };
+  const footerConfig: FooterConfigShape = {
+    ...DEFAULT_FOOTER_CONFIG,
+    ...((row.footerConfig as Partial<FooterConfigShape> | null) ?? {}),
+  };
   return (
     <AdminContainer>
       <SettingsForm
-      initial={{
-        name: row.name,
-        fullName: row.fullName,
-        tagline: row.tagline,
-        description: row.description,
-        address: row.address,
-        phoneDisplay: row.phoneDisplay,
-        phoneTel: row.phoneTel,
-        whatsappNumber: row.whatsappNumber,
-        whatsappMessage: row.whatsappMessage,
-        email: row.email,
-        hours: row.hours,
-        socials: (row.socials as Record<string, string>) ?? {
-          instagram: "",
-          facebook: "",
-        },
-        mapsEmbed: row.mapsEmbed,
-      }}
-    />
+        initial={{
+          name: row.name,
+          fullName: row.fullName,
+          tagline: row.tagline,
+          description: row.description,
+          address: row.address,
+          phoneDisplay: row.phoneDisplay,
+          phoneTel: row.phoneTel,
+          whatsappNumber: row.whatsappNumber,
+          whatsappMessage: row.whatsappMessage,
+          email: row.email,
+          hours: row.hours,
+          socials: (row.socials as Record<string, string>) ?? {
+            instagram: "",
+            facebook: "",
+          },
+          mapsEmbed: row.mapsEmbed,
+          headerConfig,
+          footerConfig,
+        }}
+      />
     </AdminContainer>
   );
 }

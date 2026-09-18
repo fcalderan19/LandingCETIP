@@ -101,3 +101,20 @@ a, button {
 
 /* Tiny scale on press */
 button:active, a:active { transform: scale(.98); }
+
+/* --- Admin layout (sidebar + main) --- */
+:root {
+  --admin-sidebar-width: 232px;
+}
+.admin-main-area {
+  margin-left: var(--admin-sidebar-width);
+  min-height: 100vh;
+  transition: margin-left .2s ease;
+}
+.admin-sidebar {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset;
+}
+@media (max-width: 640px) {
+  .admin-sidebar { width: 60px !important; }
+  .admin-main-area { margin-left: 60px; }
+}

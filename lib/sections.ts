@@ -66,6 +66,12 @@ import {
   JobOpeningsListRender,
   JobOpeningsListEditor,
 } from "@/components/sections/JobOpeningsList";
+import {
+  CustomBlockSchema,
+  CustomBlockDefaults,
+  CustomBlockRender,
+  CustomBlockEditor,
+} from "@/components/sections/CustomBlock";
 
 export const registry = {
   hero_slider: {
@@ -144,6 +150,13 @@ export const registry = {
     defaults: JobOpeningsListDefaults,
     render: JobOpeningsListRender,
     editor: JobOpeningsListEditor,
+  },
+  custom_block: {
+    type: "custom_block",
+    schema: CustomBlockSchema,
+    defaults: CustomBlockDefaults,
+    render: CustomBlockRender,
+    editor: CustomBlockEditor,
   },
 } satisfies Record<string, SectionDef>;
 

@@ -1,6 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { FieldDef } from "@/lib/sections-types";
+import { uploadMediaAsset } from "@/app/admin/_actions/media";
+import BlockElementsField from "../BlockElementsField";
 
 type Props = {
   field: FieldDef;
@@ -94,6 +96,13 @@ export default function FieldRenderer({ field, value, onChange, path }: Props) {
       return <ImageField field={field} value={value} onChange={onChange} id={id} />;
     case "array":
       return <ArrayField field={field} value={value} onChange={onChange} path={id} />;
+    case "block_elements":
+      return (
+        <div className="min-w-0 w-full">
+          <span className="block text-xs font-semibold mb-2">{field.label}</span>
+          <BlockElementsField value={value} onChange={onChange} />
+        </div>
+      );
     default:
       return <p className="text-xs text-[var(--color-coral)]">Tipo de campo no soportado: {field.kind}</p>;
   }
@@ -111,17 +120,88 @@ function ImageField({
   id: string;
 }) {
   const src = typeof value === "string" ? value : "";
+  const fileRef = useRef<HTMLInputElement | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+
+  async function handleFile(file: File) {
+    setUploadError(null);
+    if (!file.type.startsWith("image/")) {
+      setUploadError("El archivo debe ser una imagen.");
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      setUploadError("Máximo 20 MB.");
+      return;
+    }
+    const dataUrl = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result ?? ""));
+      reader.onerror = () => reject(reader.error ?? new Error("read failed"));
+      reader.readAsDataURL(file);
+    });
+    setUploading(true);
+    try {
+      const res = await uploadMediaAsset({
+        filename: file.name,
+        mime: file.type,
+        size: file.size,
+        data: dataUrl,
+      });
+      if (res.ok) {
+        onChange(res.data.url);
+      } else {
+        setUploadError(res.error ?? "No se pudo subir");
+      }
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "No se pudo subir");
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  function onDrop(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    const file = e.dataTransfer.files?.[0];
+    if (file) void handleFile(file);
+  }
+
   return (
-    <div className="min-w-0 w-full overflow-hidden">
+    <div
+      className="min-w-0 w-full overflow-hidden"
+      onDragOver={(e) => e.preventDefault()}
+      onDrop={onDrop}
+    >
       <span className="block text-xs font-semibold mb-1">{field.label}</span>
-      <input
-        id={id}
-        type="text"
-        value={src}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder="URL de la imagen o /img/archivo.jpg"
-        className={inputCls}
-      />
+      <div className="flex gap-2">
+        <input
+          id={id}
+          type="text"
+          value={src}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="URL o /img/archivo.jpg"
+          className={inputCls}
+        />
+        <button
+          type="button"
+          onClick={() => fileRef.current?.click()}
+          disabled={uploading}
+          className="shrink-0 text-xs font-semibold px-3 py-2 rounded-lg border border-[var(--color-petroleo-100)] bg-white hover:bg-[var(--color-petroleo-50)] disabled:opacity-50"
+        >
+          {uploading ? "Subiendo…" : "Subir"}
+        </button>
+        <input
+          ref={fileRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={(e) => {
+            const f = e.target.files?.[0];
+            if (f) void handleFile(f);
+            e.target.value = "";
+          }}
+        />
+      </div>
       {src && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -130,8 +210,12 @@ function ImageField({
           className="mt-2 rounded-lg border border-[var(--color-petroleo-100)] max-h-32 max-w-full object-cover"
         />
       )}
+      {uploadError && (
+        <p className="text-[10px] text-[var(--color-coral)] mt-1">{uploadError}</p>
+      )}
       <p className="text-[10px] text-[var(--color-petroleo)]/60 mt-1">
-        Subí imágenes en <a href="/admin/media" className="underline">Media</a> y pegá la URL acá.
+        Pegá una URL, subí un archivo o arrastralo acá. Ver todo en{" "}
+        <a href="/admin/media" className="underline">Media</a>.
       </p>
     </div>
   );

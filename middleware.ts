@@ -29,6 +29,16 @@ export function middleware(req: NextRequest) {
     return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
+  // Dev-only bypass: only when NODE_ENV=development AND the flag is set.
+  // Production ignores this entirely.
+  if (
+    process.env.NODE_ENV === "development" &&
+    (process.env.ADMIN_DEV_BYPASS === "1" ||
+      process.env.NEXT_PUBLIC_ADMIN_DEV_BYPASS === "1")
+  ) {
+    return NextResponse.next({ request: { headers: requestHeaders } });
+  }
+
   const url = req.nextUrl.clone();
   url.pathname = LOGIN_PATH;
   url.searchParams.set("callbackUrl", pathname);

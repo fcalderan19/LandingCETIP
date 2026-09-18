@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import type { SectionEditorMeta } from "@/lib/sections-types";
 import FieldRenderer from "./fields/FieldRenderer";
+import { SectionIcon, IconChevronDown } from "./AdminIcons";
 
 type Props = {
   sectionId: string;
@@ -49,19 +50,31 @@ export default function Inspector({
   return (
     <aside className="sticky top-0 min-w-0 w-full overflow-x-hidden">
       <div className="bg-white min-w-0 w-full">
-        <header className="px-4 pt-4 pb-3 border-b border-[var(--color-petroleo-100)]">
-          <div className="text-[10px] uppercase font-bold text-[var(--color-petroleo)]/60">
-            Editando
+        <header className="px-4 pt-4 pb-3 border-b border-[var(--color-petroleo-100)] bg-gradient-to-b from-white to-[var(--color-petroleo-50)]/40">
+          <div className="text-[10px] uppercase font-bold text-[var(--color-petroleo)]/60 tracking-wider mb-1.5">
+            Editando bloque
           </div>
-          <h3 className="text-lg font-bold">{editor.label}</h3>
+          <div className="flex items-start gap-2.5">
+            <span
+              aria-hidden="true"
+              className="shrink-0 w-10 h-10 rounded-lg bg-[var(--color-celeste)]/12 text-[var(--color-celeste-600)] flex items-center justify-center"
+            >
+              <SectionIcon name={editor.icon} size={20} />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-base font-bold text-[var(--color-petroleo)] leading-tight">
+                {editor.label}
+              </h3>
+              <div className="text-[10px] mt-0.5 text-[var(--color-petroleo)]/45 font-mono truncate">
+                {type} · {sectionId.slice(0, 8)}
+              </div>
+            </div>
+          </div>
           {editor.description && (
-            <p className="text-xs text-[var(--color-petroleo)]/70 mt-1">
+            <p className="text-xs text-[var(--color-petroleo)]/70 mt-2 leading-relaxed">
               {editor.description}
             </p>
           )}
-          <div className="text-[10px] mt-1 text-[var(--color-petroleo)]/40">
-            {type} · {sectionId.slice(0, 8)}
-          </div>
         </header>
 
         <div className="px-4 py-3 space-y-3">
@@ -75,17 +88,17 @@ export default function Inspector({
                 <button
                   type="button"
                   onClick={() => toggleGroup(group.name)}
-                  className="w-full flex items-center justify-between px-3 py-2 bg-[var(--color-petroleo-50)] hover:bg-[var(--color-petroleo-100)] transition"
+                  className="w-full flex items-center justify-between px-3 py-2.5 bg-[var(--color-petroleo-50)]/70 hover:bg-[var(--color-petroleo-100)] transition"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-xs font-bold uppercase text-[var(--color-petroleo)]/70">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-petroleo)]/70">
                     {group.label}
                   </span>
                   <span
-                    className={`text-xs transition-transform ${isOpen ? "rotate-90" : ""}`}
+                    className={`text-[var(--color-petroleo)]/50 transition-transform ${isOpen ? "" : "-rotate-90"}`}
                     aria-hidden="true"
                   >
-                    ▶
+                    <IconChevronDown size={14} />
                   </span>
                 </button>
                 {isOpen && (
@@ -123,12 +136,12 @@ export default function Inspector({
           </div>
         )}
 
-        <div className="sticky bottom-0 px-4 py-3 bg-white border-t border-[var(--color-petroleo-100)]">
+        <div className="sticky bottom-0 px-4 py-3 bg-white border-t border-[var(--color-petroleo-100)] shadow-[0_-4px_12px_-8px_rgba(0,0,0,0.1)]">
           <button
             type="button"
             disabled={saving}
             onClick={() => onSave(data)}
-            className="w-full bg-[var(--color-petroleo)] hover:bg-[var(--color-petroleo-700)] disabled:opacity-60 text-white font-semibold px-4 py-2.5 rounded-full"
+            className="w-full bg-[var(--color-petroleo)] hover:bg-[var(--color-petroleo-700)] disabled:opacity-60 text-white font-semibold px-4 py-2.5 rounded-lg text-sm transition"
           >
             {saving ? "Guardando…" : "Guardar cambios"}
           </button>

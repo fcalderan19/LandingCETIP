@@ -40,7 +40,19 @@ export default async function PageRenderer({ slug, fallback = null }: Props) {
           return null;
         }
         const Render = def.render;
-        return <Render key={section.id} {...(parsed.data as object)} />;
+        // Anchor per-section so the admin can highlight & scroll the exact
+        // block being edited. `data-*` attributes are inert on the public site.
+        return (
+          <div
+            key={section.id}
+            data-section-id={section.id}
+            data-section-type={section.type}
+            data-section-label={def.editor.label}
+            className="admin-anchor-section"
+          >
+            <Render {...(parsed.data as object)} />
+          </div>
+        );
       })}
     </>
   );

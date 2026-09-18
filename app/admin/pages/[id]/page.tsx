@@ -78,6 +78,7 @@ export default async function PageEditorRoute({
     type: def.type,
     label: def.editor.label,
     description: def.editor.description,
+    icon: def.editor.icon,
     editor: def.editor,
     defaults: def.defaults as Record<string, unknown>,
   }));
@@ -87,6 +88,7 @@ export default async function PageEditorRoute({
       pageId={res.page.id}
       pageTitle={res.page.title}
       pageSlug={res.page.slug}
+      initialPublished={res.page.published}
       initialSections={initialSections}
       catalog={catalog}
     />
