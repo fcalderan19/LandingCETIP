@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { auth } from "@/auth";
 import { listPages } from "@/app/admin/_actions/pages";
 import AdminContainer from "@/components/admin/AdminContainer";
 import {
@@ -13,8 +14,13 @@ import {
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  const result = await listPages();
+  const [result, session] = await Promise.all([listPages(), auth()]);
   const pages = result.ok ? result.data : [];
+  // Prefer Google's display name; fall back to the email local-part so we
+  // never render "Hola null" if Google didn't return a name for some reason.
+  const rawName = session?.user?.name?.trim();
+  const emailFallback = session?.user?.email?.split("@")[0] ?? "";
+  const firstName = (rawName ?? emailFallback).split(/\s+/)[0] || "";
 
   const home = pages.find((p) => p.slug === "home");
   const totalSections = pages.reduce((n, p) => n + p.sectionsCount, 0);
@@ -29,7 +35,7 @@ export default async function AdminDashboard() {
             Panel
           </div>
           <h1 className="text-3xl font-extrabold text-[var(--color-petroleo)] tracking-tight">
-            ¡Hola! Bienvenido/a
+            ¡Hola, {firstName}!
           </h1>
           <p className="text-sm text-[var(--color-petroleo)]/70 mt-1 max-w-xl">
             Desde acá administrás todo el contenido del sitio. Elegí una página
